@@ -89,74 +89,23 @@
                 </div>
                 <div class="popular">
                     <div class="popular_header">Popular Artists</div>
-                    <div class="popular_list">
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
-                        <div class="pop">
-                            <img
-                                src="https://i.ytimg.com/vi/sRAG2NG5bkQ/maxresdefault.jpg"
-                                alt=""
-                            />
-                            <div class="pop_text">Falling in reverse</div>
-                        </div>
+                    <div class="popular_list" id="artists_lists"></div>
+                    <div class="popular_header" style="margin-top: 15px">
+                        Popular Albums
                     </div>
+                    <div class="popular_list" id="albums_lists"></div>
                 </div>
             </div>
             <div class="right">
+                <div class="right_song">
+                    <img
+                        src="assets/images/song1.jpg"
+                        class="right_song_img"
+                        alt=""
+                    />
+                    <div class="right_song_name">Bohemian Rhapsody</div>
+                    <div class="right_song_artist">Queen</div>
+                </div>
                 <div class="lyrics"></div>
                 <canvas class="analyser" id="analyser"></canvas>
             </div>
@@ -205,9 +154,22 @@
                 <div class="player_right">
                     <i class="fas fa-random"></i>
                 </div>
+                <div class="player_volume">
+                    <img
+                        src="assets/images/volume.png"
+                        alt=""
+                        id="volume_icon"
+                    />
+                    <div class="full_height" id="full_height">
+                        <div class="volume_bar_wrap">
+                            <div class="volume_bar" id="volume_bar_wrap"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="assets/js/jquery.js"></script>
+
         <script src="assets/js/script.js"></script>
     </body>
 </html>

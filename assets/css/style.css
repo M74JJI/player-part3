@@ -125,8 +125,27 @@ body {
     background-color: #111727;
     border-top-right-radius: 10px;
     position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url(../images/song1.jpg);
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
 }
-
+.right_song {
+    text-align: center;
+    color: #fff;
+}
+.right_song_img {
+    border-radius: 5px;
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    box-shadow: 2px 2px 2px rgba(220, 220, 220, 0.2);
+}
 .middle_top {
     height: 50%;
     background-image: url(https://zumic.com/wp-content/uploads/falling-in-reverse-2019-tour-dates-tickets---copy-1.jpg);
@@ -176,7 +195,7 @@ body {
     display: flex;
     align-items: center;
     gap: 25px;
-    border-top: 1px solid #fff;
+    border-top: 1px solid #738fc721;
 }
 .player_actions {
     display: flex;
@@ -257,18 +276,23 @@ body {
 .popular_list {
     margin-top: 10px;
     display: flex;
-    align-items: center;
+
     gap: 10px;
 }
 .pop {
     text-align: center;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.pop img {
+.artist_img {
     width: 80px;
     height: 80px;
     object-fit: cover;
     border-radius: 50%;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
 }
 .pop_text {
     color: #fff;
@@ -287,4 +311,36 @@ body {
 }
 .song_active {
     background: #171f36;
+}
+.album_cover {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+}
+.player_volume {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
+}
+.player_volume img {
+    width: 20px;
+}
+.volume_bar_wrap {
+    width: 150px;
+    height: 2px;
+    background: #fff;
+}
+.volume_bar {
+    width: 0;
+    height: 2px;
+    background: #03bdd9;
+}
+.full_height {
+    height: 10px;
+    display: flex;
+    align-items: center;
 }

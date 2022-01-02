@@ -78,12 +78,77 @@ let songs = [
         artist: 'Biggie Smalls',
         lyrics: '',
     },
+];
+let artists = [
     {
-        name: '',
-        src: 'assets/songs/song10.mp3',
-        cover: 'assets/images/song10.jpg',
-        artist: '',
-        lyrics: '',
+        name: 'Queen',
+        picture: 'assets/images/freddie.png',
+    },
+    {
+        name: 'Michael Jackson',
+        picture: 'assets/images/mich.jpg',
+    },
+    {
+        name: 'Led Zeppelin',
+        picture: 'assets/images/robert.jpg',
+    },
+    {
+        name: 'Kendrick Lamar',
+        picture: 'assets/images/kendrick.jpg',
+    },
+    {
+        name: 'Ghost',
+        picture: 'assets/images/ghost.jpg',
+    },
+    {
+        name: 'Cradle of filth',
+        picture: 'assets/images/cradle.jpeg',
+    },
+    {
+        name: 'Rammstein',
+        picture: 'assets/images/ramm.jpg',
+    },
+    {
+        name: 'Judas Priest',
+        picture: 'assets/images/judas.jpg',
+    },
+    {
+        name: 'Mac Miller',
+        picture: 'assets/images/mac.jpg',
+    },
+];
+let albums = [
+    {
+        name: 'Master of puppets',
+        picture: 'assets/images/master.jfif',
+    },
+    {
+        name: 'Rust in peace',
+        picture: 'assets/images/megadeth.jfif',
+    },
+    {
+        name: 'Ready to die',
+        picture: 'assets/images/rdie.jfif',
+    },
+    {
+        name: 'Automatic for the People',
+        picture: 'assets/images/autm.jfif',
+    },
+    {
+        name: 'Vaughan Texas Flood',
+        picture: 'assets/images/vaughan.jfif',
+    },
+    {
+        name: 'Korn (1994)',
+        picture: 'assets/images/korn.jpg',
+    },
+    {
+        name: 'Illmatic',
+        picture: 'assets/images/Illmatic.jfif',
+    },
+    {
+        name: 'King 810',
+        picture: 'assets/images/king.jpg',
     },
 ];
 function pad(d) {
@@ -92,7 +157,7 @@ function pad(d) {
 $(document).ready(function () {
     songs.map(function (song, i) {
         var temp =
-            '<div class="song" data-id="' +
+            '<div class="song"  data-id="' +
             i +
             '"> <img src="assets/images/equalizer.gif" alt="" class="equalizer_gif" /> <div class="song_num">' +
             pad(i + 1) +
@@ -105,17 +170,38 @@ $(document).ready(function () {
             '</div> </div> </div>';
         $('.left_songs_list').append(temp);
     });
+    artists.map(function (artist, i) {
+        var temp =
+            '<div class="pop"> <img class="artist_img" src="' +
+            artist.picture +
+            '" alt="" /> <div class="pop_text">' +
+            artist.name +
+            '</div> </div>';
+        $('#artists_lists').append(temp);
+    });
+    albums.map(function (artist, i) {
+        var temp =
+            '<div class="pop"> <img class="album_cover" src="' +
+            artist.picture +
+            '" alt="" /> <div class="pop_text">' +
+            artist.name +
+            '</div> </div>';
+        $('#albums_lists').append(temp);
+    });
 });
 
 var audio = document.getElementsByTagName('audio')[0];
 var audioPlayer = document.getElementsByTagName('audio')[0];
 
 var bar_size = 500;
+
 var updateTrack = setInterval(function () {
     var sizee = parseInt((audio.currentTime * bar_size) / audio.duration);
+    var volume_size = audioPlayer.volume;
     $('.progress_bar').css('width', '' + sizee + 'px');
     var time = formatTime(audio.currentTime);
     $('.time_start').html(time);
+    $('.volume_bar').css('width', '' + volume_size * 150 + 'px');
 }, 500);
 $(document).on('click', '#play', function () {
     audio.play();
@@ -130,6 +216,20 @@ canvass.addEventListener('click', function (e) {
         //calculate the current time based on position of mouse cursor in canvas box
         audioPlayer.currentTime =
             audioPlayer.duration * (e.offsetX / canvass.clientWidth);
+    } catch (err) {
+        // Fail silently but show in F12 developer tools console
+        if (window.console && console.error('Error:' + err));
+    }
+});
+
+vol = document.getElementById('full_height');
+vol.addEventListener('click', function (e) {
+    if (!e) {
+        e = window.event;
+    } //get the latest windows event if it isn't set
+    try {
+        //calculate the current time based on position of mouse cursor in canvas box
+        audioPlayer.volume = e.offsetX / vol.clientWidth;
     } catch (err) {
         // Fail silently but show in F12 developer tools console
         if (window.console && console.error('Error:' + err));
@@ -159,6 +259,18 @@ $(document).on('click', '.song', function () {
     $('.song_player').find('.song_img').attr('src', songs[id].cover);
     $('.song_player').find('.song_name').text(songs[id].name);
     $('.song_player').find('.song_artist').text(songs[id].artist);
+    $('.right').css(
+        'background-image',
+        'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(' +
+            songs[id].cover +
+            ')'
+    );
+    $('.right').css('background-repeat', 'no-repeat');
+    $('.right').css('background-size', 'cover');
+    $('.right').css('background-position', '50%');
+    $('.right_song_img').attr('src', '' + songs[id].cover + '');
+    $('.right_song_name').text('' + songs[id].name + '');
+    $('.right_song_artist').text('' + songs[id].artist + '');
 
     var lyrics = songs[id].lyrics;
 
@@ -237,6 +349,7 @@ $(document).on('click', '.pause_player', function () {
     $('.play_player').show();
     $('.song_num').show();
     $('.equalizer_gif').hide();
+    $('.bottom_equalizer_gif').hide();
 });
 $(document).on('click', '.play_player', function () {
     audioPlayer.play();
@@ -245,4 +358,105 @@ $(document).on('click', '.play_player', function () {
     console.log($('.song[selected=selected]'));
     $('.song[selected=selected]').find('.song_num').hide();
     $('.song[selected=selected]').find('.equalizer_gif').show();
+    $('.bottom_equalizer_gif').show();
+});
+/*
+search.addEventListener('keyup', function () {
+    var searchTerm = search.value.toLowerCase();
+    if (searchTerm == '') {
+        container.innerHTML = '';
+        initialize_songs();
+    } else {
+        var results = songs
+            .map(function (song, i) {
+                var { name, artist } = song;
+                if (
+                    name.toLowerCase().includes(searchTerm) == true ||
+                    artist.toLowerCase().includes(searchTerm) == true
+                ) {
+                    return song;
+                }
+            })
+            .filter(Boolean);
+
+        if (results.length > 0) {
+            results.map(function (song, i) {
+                container.innerHTML =
+                    '<div class="song" data-src=' +
+                    song.src +
+                    '><img class="song_img" src=' +
+                    song.cover +
+                    ' alt="" /><div class="col"><div class="song_name">' +
+                    song.name +
+                    '</div><div class="song_artist">' +
+                    song.artist +
+                    '</div></div></div>';
+            });
+            var song = document.querySelectorAll('.song');
+            for (let i = 0; i < song.length; i++) {
+                song[i].addEventListener('click', function (e) {
+                    var img = song[i]
+                        .querySelector('.song_img')
+                        .getAttribute('src');
+                    var src = song[i].getAttribute('data-src');
+                    audioPlayer.setAttribute('src', src);
+                    audioPlayer.play();
+                });
+            }
+        }
+    }
+});
+*/
+var results = [];
+$(document).on('keyup', '.song_input_search', function (e) {
+    var searchTerm = $(this).val();
+    if (searchTerm == '') {
+        $('.left_songs_list').html('');
+        songs.map(function (song, i) {
+            var temp =
+                '<div class="song" data-id="' +
+                i +
+                '"> <img src="assets/images/equalizer.gif" alt="" class="equalizer_gif" /> <div class="song_num">' +
+                pad(i + 1) +
+                '</div> <img src="' +
+                song.cover +
+                '" class="song_img" /> <div class="song_info"> <div class="song_name">' +
+                song.name +
+                '</div> <div class="song_artist">' +
+                song.artist +
+                '</div> </div> </div>';
+            $('.left_songs_list').append(temp);
+        });
+    } else {
+        results = songs.map(function (song, i) {
+            var { name, artist } = song;
+            if (
+                name.toLowerCase().includes(searchTerm) == true ||
+                artist.toLowerCase().includes(searchTerm) == true
+            ) {
+                return song;
+            }
+        });
+        console.log(results.length);
+        if (results.length > 0) {
+            console.log(results);
+            results.map(function (song, i) {
+                console.log(song);
+                var temp =
+                    '<div class="song" data-id="' +
+                    i +
+                    '"> <img src="assets/images/equalizer.gif" alt="" class="equalizer_gif" /> <div class="song_num">' +
+                    pad(i + 1) +
+                    '</div> <img src="' +
+                    song.cover +
+                    '" class="song_img" /> <div class="song_info"> <div class="song_name">' +
+                    song.name +
+                    '</div> <div class="song_artist">' +
+                    song.artist +
+                    '</div> </div> </div>';
+                $('.left_songs_list').html('');
+                $('.left_songs_list').append(temp);
+            });
+        }
+    }
 });

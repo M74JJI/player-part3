@@ -29,7 +29,7 @@
                 </div>
                 <div class="left_menu">
                     <div class="menu_item active">
-                        <i class="fas fa-music" style="color: #058594"></i>
+                        <i class="fas fa-home" style="color: #058594"></i>
                         <div class="menu_item_text">Home</div>
                     </div>
                     <div class="menu_item">
@@ -37,11 +37,11 @@
                         <div class="menu_item_text">Songs</div>
                     </div>
                     <div class="menu_item">
-                        <i class="fas fa-music" style="color: #fff"></i>
+                        <i class="fas fa-compact-disc" style="color: #fff"></i>
                         <div class="menu_item_text">Artists</div>
                     </div>
                     <div class="menu_item">
-                        <i class="fas fa-music" style="color: #fff"></i>
+                        <i class="fas fa-stream" style="color: #fff"></i>
                         <div class="menu_item_text">Albums</div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             viewBox="0 0 16 16"
                             width="1.3rem"
                             height="1.3rem"
-                            fill="#555"
+                            fill="#fff"
                         >
                             <g
                                 fill-rule="evenodd"
@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 <div class="player_actions">
-                    <i class="fas fa-step-backward"></i>
+                    <i class="fas fa-step-backward" id="prev_song"></i>
 
                     <img
                         src="assets/images/play.png"
@@ -140,7 +140,7 @@
                         class="pause_player"
                     />
 
-                    <i class="fas fa-step-forward"></i>
+                    <i class="fas fa-step-forward" id="next_song"></i>
                 </div>
                 <div class="players_timer">
                     <div class="time_start">01:32</div>
@@ -152,13 +152,36 @@
                     <div class="time_end">06:53</div>
                 </div>
                 <div class="player_right">
-                    <i class="fas fa-random"></i>
+                    <img
+                        src="assets/images/Replay1.png"
+                        alt=""
+                        id="replaySong"
+                    />
+                    <img src="assets/images/order.png" alt="" id="order" />
+                    <img
+                        src="assets/images/shuffle.png"
+                        alt=""
+                        id="shuffle"
+                        style="display: none"
+                    />
+                    <img
+                        src="assets/images/Replay.png"
+                        alt=""
+                        style="display: none"
+                        id="replaySameSong"
+                    />
                 </div>
                 <div class="player_volume">
                     <img
                         src="assets/images/volume.png"
                         alt=""
                         id="volume_icon"
+                    />
+                    <img
+                        src="assets/images/mute.png"
+                        alt=""
+                        style="display: none"
+                        id="mute_icon"
                     />
                     <div class="full_height" id="full_height">
                         <div class="volume_bar_wrap">

@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap');
-
 body {
+    font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial,
+        sans-serif;
     background: #1b3241;
     padding: 0;
     margin: 0;
@@ -9,21 +9,18 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    font-family: '"Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;',
-        'Helvetica Neue', Helvetica, Arial, sans-serif;
+    justify-content: center;
 }
-
 .container {
-    width: 1500px;
+    max-width: 1500px;
     height: 90vh;
     margin: 0 auto;
-
     display: grid;
     grid-template-columns: 1fr 3fr 1.5fr;
     grid-template-rows: repeat(5, 1fr) 90px;
 }
 .left {
-    background-color: #111727;
+    background: #111727;
     grid-row: 1/6;
     border-top-left-radius: 10px;
 }
@@ -33,8 +30,8 @@ body {
     padding: 15px;
 }
 .dot {
-    width: 15px;
     height: 15px;
+    width: 15px;
     border-radius: 50%;
 }
 .left_menu {
@@ -49,31 +46,21 @@ body {
     gap: 10px;
     margin-bottom: 15px;
 }
-.menu_item i {
-}
 .menu_item_text {
     font-weight: 600;
     font-size: 14px;
+}
+.active {
+    color: #058594;
 }
 .left_songs_list {
     max-height: 530px;
     overflow-y: auto;
     padding: 10px 10px 10px 0;
 }
-.equalizer_gif {
-    width: 20px;
-    -webkit-filter: invert(40%);
-    display: none;
-}
-.bottom_equalizer_gif {
-    width: 20px;
-    -webkit-filter: invert(40%);
-    display: none;
-}
 .left_songs_list::-webkit-scrollbar {
     width: 0;
 }
-
 .song {
     display: flex;
     align-items: center;
@@ -85,18 +72,16 @@ body {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-.song_player {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    font-size: 14px;
-    gap: 15px;
-    cursor: pointer;
-    padding: 5px;
-    width: 250px;
-}
 .song:hover {
     background: #171f36;
+}
+.play_hover {
+    display: none;
+    width: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .song:hover .play_hover {
     display: block;
@@ -107,265 +92,17 @@ body {
     border-radius: 5px;
     object-fit: cover;
 }
-.song_info {
-}
-.song_num {
-    color: #353c4a;
-    width: 20px;
-}
 .song_name {
     font-weight: 600;
 }
 .song_artist {
     color: #353c4a;
 }
-.active {
-    color: #058594;
+.song_num {
+    color: #353c4a;
+    width: 20px;
 }
-.middle {
-    background: #790b3269;
-    grid-row: 1/6;
-}
-.right {
-    grid-row: 1/6;
-    background-color: #111727;
-    border-top-right-radius: 10px;
-    position: relative;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-        url(../images/song1.jpg);
-    background-size: cover;
-    background-position: 50%;
-    background-repeat: no-repeat;
-}
-.right_song {
-    text-align: center;
-    color: #fff;
-    font-family: 'Spline Sans', sans-serif;
-}
-.right_song_img {
-    border-radius: 5px;
-    height: 250px;
-    width: 250px;
-    object-fit: cover;
-    box-shadow: 2px 2px 2px rgba(220, 220, 220, 0.2);
-    margin-bottom: 10px;
-}
-.middle_top {
-    height: 50%;
-    background-image: url(https://zumic.com/wp-content/uploads/falling-in-reverse-2019-tour-dates-tickets---copy-1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 5px;
-}
-.search {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    background: rgba(255, 255, 255, 0.172);
-    height: 35px;
-    padding: 0 5px 0 10px;
-    width: 280px;
-    border-radius: 50px;
-}
-.search input {
-    width: 100%;
-    border: none;
-    outline: none;
-    height: 100%;
-    background: transparent;
-    color: #fff;
-    font-size: 17px;
-}
-.search input::placeholder {
-    color: #fff;
-}
-.song_img_wrap {
-    position: relative;
-}
-.play_hover {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25px;
-    height: 25px;
+.equalizer_gif {
+    width: 20px;
     display: none;
-}
-.play_hover img {
-}
-.bottom {
-    background: #0f1624;
-    grid-column: 1/4;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    border-top: 1px solid #738fc721;
-}
-.player_actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-.player_actions i {
-    color: #fff;
-    cursor: pointer;
-}
-.play_player {
-    width: 35px;
-    cursor: pointer;
-}
-.pause_player {
-    width: 35px;
-    cursor: pointer;
-    display: none;
-}
-
-.time_start,
-.time_end {
-    color: #3690a4;
-    font-weight: 600;
-    font-size: 12px;
-}
-.players_timer {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.time_slider {
-    width: 500px;
-    height: 2px;
-    background: #eee;
-    position: relative;
-    cursor: pointer;
-}
-.progress_bar {
-    width: 0;
-    height: 3px;
-    background: #3690a4;
-    position: absolute;
-    left: 0;
-}
-.bar_round {
-    position: absolute;
-    right: -10px;
-    bottom: -10px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid #3690a4;
-}
-.point_round {
-    position: absolute;
-    right: -2px;
-    bottom: -1px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #058594;
-}
-.player_right {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.player_right img {
-    width: 20px;
-    cursor: pointer;
-}
-.popular {
-    padding: 10px;
-}
-.popular_header {
-    font-weight: 600;
-    font-size: 18px;
-    color: #fff;
-}
-.popular_list {
-    margin-top: 10px;
-    display: flex;
-
-    gap: 10px;
-}
-.pop {
-    text-align: center;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.2s;
-}
-.pop:hover {
-    transform: scale(1.05);
-}
-.artist_img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    margin-bottom: 5px;
-}
-.pop_text {
-    color: #fff;
-    font-weight: 600;
-    font-size: 13px;
-}
-.lyrics {
-    padding: 15px;
-    color: #fff;
-    font-weight: 600;
-    font-style: italic;
-    font-size: 18px;
-    text-align: center;
-    font-family: 'Spline Sans', sans-serif;
-}
-.analyser {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-.song_active {
-    background: #171f36;
-}
-.album_cover {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    margin-bottom: 5px;
-}
-.player_volume {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    gap: 5px;
-}
-.player_volume img {
-    width: 20px;
-}
-.volume_bar_wrap {
-    width: 150px;
-    height: 2px;
-    background: #fff;
-}
-.volume_bar {
-    width: 0;
-    height: 2px;
-    background: #03bdd9;
-}
-.full_height {
-    height: 10px;
-    display: flex;
-    align-items: center;
 }

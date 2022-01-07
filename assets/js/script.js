@@ -205,13 +205,18 @@ let albums = [
         picture: 'assets/images/king.jpg',
     },
 ];
+function numformatter(num) {
+    return num >= 10 ? num.toString() : '0' + num.toString();
+}
 
 $(document).ready(function () {
     songs.map((song, i) => {
         var template =
             '<div class="song" data-id="' +
             i +
-            '"> <img src="assets/images/equalizer.gif" class="equalizer_gif" alt="" /> <div class="song_num"></div> <div style="position: relative"> <img src="' +
+            '"> <img src="assets/images/equalizer.gif" class="equalizer_gif" alt="" /> <div class="song_num">' +
+            numformatter(i + 1) +
+            '</div> <div style="position: relative"> <img src="' +
             song.cover +
             '" class="song_img" alt="" /> <img src="assets/images/play.png" class="play_hover" alt="" /> </div> <div class="song_info"> <div class="song_name">' +
             song.name +
@@ -220,4 +225,75 @@ $(document).ready(function () {
             '</div> </div> </div>';
         $('.left_songs_list').append(template);
     });
+    artists.map(function (artist) {
+        var template =
+            '<div class="pop"><img src="' +
+            artist.picture +
+            '" class="artist_img"><div class="pop_text">' +
+            artist.name +
+            '</div></div>';
+        $('#artists_list').append(template);
+    });
+    albums.map(function (album) {
+        var template =
+            '<div class="pop"><img src="' +
+            album.picture +
+            '" class="album_cover"><div class="pop_text">' +
+            album.name +
+            '</div></div>';
+        $('#albums_list').append(template);
+    });
+});
+
+$(document).on('keyup', '#search_input', function () {
+    var searchTerm = $(this).val();
+    console.log(searchTerm);
+    if (searchTerm === '') {
+        songs.map((song, i) => {
+            var template =
+                '<div class="song" data-id="' +
+                i +
+                '"> <img src="assets/images/equalizer.gif" class="equalizer_gif" alt="" /> <div class="song_num">' +
+                numformatter(i + 1) +
+                '</div> <div style="position: relative"> <img src="' +
+                song.cover +
+                '" class="song_img" alt="" /> <img src="assets/images/play.png" class="play_hover" alt="" /> </div> <div class="song_info"> <div class="song_name">' +
+                song.name +
+                '</div> <div class="song_artist">' +
+                song.artist +
+                '</div> </div> </div>';
+            $('.left_songs_list').append(template);
+        });
+    } else {
+        var results = songs
+            .map(function (song) {
+                var { name, artist } = song;
+                if (
+                    name.toLowerCase().includes(searchTerm) == true ||
+                    artist.toLowerCase().includes(searchTerm) == true
+                ) {
+                    return song;
+                }
+            })
+            .filter(Boolean);
+
+        if (results.length > 0) {
+            results.map((song, i) => {
+                $('.left_songs_list').html('');
+                var template =
+                    '<div class="song" data-id="' +
+                    i +
+                    '"> <img src="assets/images/equalizer.gif" class="equalizer_gif" alt="" /> <div class="song_num">' +
+                    numformatter(i + 1) +
+                    '</div> <div style="position: relative"> <img src="' +
+                    song.cover +
+                    '" class="song_img" alt="" /> <img src="assets/images/play.png" class="play_hover" alt="" /> </div> <div class="song_info"> <div class="song_name">' +
+                    song.name +
+                    '</div> <div class="song_artist">' +
+                    song.artist +
+                    '</div> </div> </div>';
+                $('.left_songs_list').append(template);
+            });
+        }
+    }
 });

@@ -106,3 +106,82 @@ body {
     width: 20px;
     display: none;
 }
+.middle {
+    background: #790b3269;
+    grid-row: 1/6;
+}
+.middle_top {
+    height: 50%;
+    background-image: url('https://zumic.com/wp-content/uploads/falling-in-reverse-2019-tour-dates-tickets---copy-1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5px;
+}
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.172);
+    height: 35px;
+    padding: 0 5px 0 10px;
+    width: 280px;
+    border-radius: 50px;
+}
+.search input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    font-size: 17px;
+}
+.search input::placeholder {
+    color: #fff;
+}
+.popular {
+    padding: 10px;
+}
+.popular_header {
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+}
+.popular_list {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}
+.pop {
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s;
+}
+.pop:hover {
+    transform: scale(1.05);
+}
+.artist_img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+}
+.pop_text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+}
+.album_cover {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+}

@@ -243,6 +243,18 @@ $(document).ready(function () {
             '</div></div>';
         $('#albums_list').append(template);
     });
+    $('.right').css(
+        'background-image',
+        'linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(' +
+            songs[0].cover +
+            ')'
+    );
+    $('.right_song_img').attr('src', songs[0].cover);
+    $('.right_song_name').text(songs[0].name);
+    $('.right_song_artist').text(songs[0].artist);
+    $('.bottom .song_img').attr('src', songs[0].cover);
+    $('.bottom .song_name').text(songs[0].name);
+    $('.bottom .song_artist').text(songs[0].artist);
 });
 
 $(document).on('keyup', '#search_input', function () {
